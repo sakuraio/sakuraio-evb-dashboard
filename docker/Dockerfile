@@ -1,3 +1,7 @@
+# This Dockerfile is derived code. Original code is released under the Apache License 2.0 .
+# https://github.com/node-red/node-red-docker/blob/master/latest/Dockerfile
+# https://github.com/node-red/node-red-docker/blob/master/LICENSE
+
 ARG NODE_VERSION=6
 FROM node:${NODE_VERSION}
 
