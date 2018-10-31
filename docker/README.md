@@ -49,7 +49,7 @@ docker build -t sakuraio-evb-dashboard .
 
 コンテナ上で稼働するフローを変更したい場合は、起動時に読み込まれるフローを編集し、コンテナをビルドし直すことを推奨します。
 
-起動時に読み込まれるフローは[evb_flow.json.template](./docker/evb_flow.json.template)に記述されています。
+起動時に読み込まれるフローは[evb_flow.json.template](./evb_flow.json.template)に記述されています。
 
 evb_flow.json.templateには、Node-RED フローエディタからエクスポートしたJSON形式のフローを記述してください。
 evb_flow.json.templateに含まれる `%WEBSOCKET_TOKEN%` と `%MODULE_ID%` はコンテナ起動時に環境変数で与えられたトークンとモジュールIDに置き換えられます。
