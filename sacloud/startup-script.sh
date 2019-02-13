@@ -56,10 +56,11 @@ Requires=docker.service
 [Service]
 TimeoutStartSec=0
 Restart=always
-ExecStartPre=-/usr/bin/docker stop misodengaku/sakuraio-evb-dashboard
-ExecStartPre=-/usr/bin/docker rm misodengaku/sakuraio-evb-dashboard
+ExecStartPre=/usr/bin/whoami
+ExecStartPre=-/usr/bin/docker stop sakuraio-evb-dashboard
+ExecStartPre=-/usr/bin/docker rm sakuraio-evb-dashboard
 ExecStartPre=/usr/bin/docker pull misodengaku/sakuraio-evb-dashboard
-ExecStart=/usr/bin/docker run -d -p %UI_PORT%:8080 -v /log:/log -e MODULE_ID=%MODULE_ID% -e WEBSOCKET_TOKEN=%WEBSOCKET_TOKEN% misodengaku/sakuraio-evb-dashboard
+ExecStart=/usr/bin/docker run -p %UI_PORT%:8080 -v /log:/log -e MODULE_ID=%MODULE_ID% -e WEBSOCKET_TOKEN=$WEBSOCKET_TOKEN$ --name sakuraio-evb-dashboard misodengaku/sakuraio-evb-dashboard
 
 [Install]
 WantedBy=multi-user.target
@@ -68,7 +69,5 @@ EOF
 systemctl daemon-reload
 systemctl enable sakuraio-evb-dashboard
 systemctl start sakuraio-evb-dashboard
-
-# docker run -d -p $UI_PORT:8080 -v /log:/log -e MODULE_ID=$MODULE_ID -e WEBSOCKET_TOKEN=$WEBSOCKET_TOKEN misodengaku/sakuraio-evb-dashboard
 
 exit 0

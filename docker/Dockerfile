@@ -32,7 +32,7 @@ USER node-red
 COPY package.json /usr/src/node-red/
 RUN npm install
 
-# User configuration directory volume
+# nginx port
 EXPOSE 8080
 
 # Environment variable holding file path for flows configuration
